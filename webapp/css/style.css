@@ -1,0 +1,401 @@
+body {
+	min-width: 1230px;
+	text-align: left;
+}
+
+/*********************************** header ***********************************/
+/* CSS Document */
+#header {
+	height: 140px; /** 最底部预留 10px,便于nav高度变高时不撑破 **/
+	width: 100%;
+	background-image: url(../images/menu_bg.png);
+	background-position: 0px 65px;
+	background-repeat: repeat-x;
+	z-index: 200;
+	position: relative;
+}
+#header_main {
+	width: 1230px;
+	margin: 0 auto;
+}
+
+#header_left {
+	width: 370px;
+	height: 120px;
+	margin-top: 10px;
+	background-color: #FFF;
+	float: left;
+	text-align: center;
+}
+#header_left .link_logo {
+	
+}
+#header_right {
+	float: left;
+	width: 840px;
+}
+
+/** 顶部 **/
+#header_top {
+	height: 65px;
+	text-align: left;
+}
+#header_top .icon{
+	width:55px;
+	height:100%;
+	float:left;
+	background-image:url(../images/index_icons.png);
+	background-repeat:no-repeat;
+	margin-left: 100px;
+}
+#header_top .schools{
+	margin-left: 5px;
+	padding-top:5px;
+	float: left;
+}
+#header_top .schools .city {
+	font-size: 15px;
+	line-height: 25px;
+	margin-top: 4px; 
+	color: #666;
+}
+#header_top .schools .school {
+	font-size: 13px;
+	line-height: 18px;
+}
+
+#header_top .search_box {
+	float: right;
+	width: 250px;
+	height: 25px;
+	/*background-image: url(../images/home/search_input.png);*/
+	margin-top: 20px;
+	-moz-border-radius: 3px 3px 3px 3px;/* Gecko browsers */
+   	-webkit-border-radius: 3px;/* Webkit browsers */
+   	border-radius: 3px;/* W3C syntax */
+	border: 1px solid #a3a3a3;
+	position: relative;
+}
+#header_top .search_box input {
+	width: 115px;
+	margin-left: 5px;
+	line-height: 25px;
+	font-size: 12px;
+	color: #333;
+	border: medium none;
+	background: none repeat scroll 0% 0% transparent !important;
+	position: absolute;
+	height: 25px;
+}
+#header_top .search_box a.btn_search {
+	display: block;
+	width: 12px;
+	height: 12px;
+	background-image: url(../images/home/btn_search.png);
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}
+#header_top .search_box a.btn_search:hover {
+	
+}
+
+
+/*---导航---*/
+#nav {
+	width:840px;
+	height: 65px;
+	text-align: center;
+	background-image:url(../images/nav.png);
+	font-family: 微软雅黑,宋体;
+}
+
+/** 分割线 **/
+#nav .vertical_line {
+	width: 2px;
+	height: 26px;
+	float: left;
+	margin-top: 10px;
+	background-image: url(../images/nav_vertical_line.png);
+}
+#nav .active .vertical_line, #nav .dhhover .vertical_line {
+	background-image: none;
+}
+
+/****第一级列表的项*****/
+#nav li {
+	float: left;
+	height: 55px;
+	padding-top: 10px;
+	position: relative;
+}
+
+#nav li.line_off {
+	background: none;
+}
+
+/***第一级列表的链接***/
+#nav a {
+	display: block;
+	width: 138px; /** 加上分割线2px = li的长度*/
+	float: left;
+	text-decoration: none;
+	padding-top: 5px;
+	line-height: 18px;
+	font-size: 18px;
+	color: #fff;
+	blr: expression(this.onFocus = this.blur ());
+	outline: none;
+	position: relative;
+}
+
+#nav a:hover,#nav .active a,#nav li.dhhover a {
+	color: #fff;
+	text-decoration: none;
+}
+#nav .english {
+	padding-top: 2px;
+	font-family: Arial;
+	font-size: 11px;
+}
+
+#nav a span {
+	font-size: 10px;
+	-webkit-text-size-adjust: none;
+	line-height: 12px;
+	display: block;
+	font-weight: 300;
+	cursor: pointer;
+	position: relative;
+	margin-top:4px;
+}
+
+/**** 选中的菜单 ****/
+#nav li.active {
+	background-image: url("../images/nav.png");
+	background-position: 0 -65px;
+}
+
+/****** 选中翻转效果需要 ******/
+#nav li.dhhover{
+	background-image: url("../images/nav.png");
+	background-position: 0 -130px;
+	height:63px;
+}
+
+/** 第二级菜单 **/
+#nav ul.sencond_nav {
+	display: none;
+	position: absolute;
+	top: 72px; /*****这里影响着下拉列表顶部的高度，这里非常重要*****/
+	left: -10px;
+	width: 134px;
+	padding: 0;
+	background: #fff;
+	margin-left: 10px;
+	border: 3px solid #F3C436;
+}
+
+#nav ul.sencond_nav li {
+	height: 35px;
+	position: relative;
+	border-bottom: solid 1px #ccc;
+	padding-top: 0px;
+}
+
+#nav li ul.sencond_nav a, #nav li.active ul.sencond_nav a, #nav li.dhhover ul.sencond_nav a {
+	width: 134px;
+	line-height: 35px;
+	font-weight: 300;
+	color: #333;
+	padding: 0;
+	font-size: 14px;
+}
+#nav li ul.sencond_nav a:hover {
+	background: #efefef;
+}
+
+
+/*********************************** main ***********************************/
+#main {
+	width: 1230px;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 14px;
+}
+
+/** 主体内容顶部 **/
+#main_top {
+	border-bottom: 2px solid #cbcbcb;
+}
+#main_top .box_left {
+	width: 330px;
+	padding-top: 5px;
+	padding-bottom: 30px;
+	float: left;
+}
+#main_top .box_left .title {
+	display: inline-block;
+	margin: 0 auto;
+	border-bottom: 5px solid #e58411;
+}
+#main_top .box_left h2 {
+	font-size: 36px;
+	font-weight: lighter;
+	line-height: 50px;
+	display: inline;
+	color: #333;
+}
+#main_top .box_left .english {
+	font-size: 18px;
+	font-family: Arial;
+	line-height: 25px;
+	display: inline;
+}
+#main_top .box_right {
+	float: left;
+	margin-left: 40px;
+}
+
+
+/** 主体内容左侧顶部 **/
+#main_left_top {
+	width: 330px;
+	padding-top: 5px;
+	padding-bottom: 30px;
+	text-align: center;
+}
+#main_left_top  .title {
+	display: inline-block;
+	margin: 0 auto;
+	border-bottom: 5px solid #e58411;
+}
+#main_left_top h2 {
+	font-size: 36px;
+	font-weight: lighter;
+	line-height: 50px;
+	display: inline;
+	color: #333;
+}
+#main_left_top .english {
+	font-size: 18px;
+	font-family: Arial;
+	line-height: 25px;
+	display: inline;
+}
+
+/** left list **/
+.left_list_box {
+	width: 280px;
+	margin: 0 auto;
+}
+.left_list_box h2 {
+	font-size: 16px;
+	font-weight: normal;
+	color: #000;
+	line-height: 35px;
+	text-align: left;
+	border-bottom: 1px solid #f8874f; 
+	border-top: 2px solid #f8874f;
+}
+.left_list_box h2 .icon_hot {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	background-image: url(../images/icon_list.png);
+	background-repeat: no-repeat;
+	background-position: 0px -58px;
+	margin-top: 5px;
+	margin-right: 5px;
+	vertical-align: text-bottom;
+}
+.left_list_box li {
+	line-height: 35px;
+	text-align: left;
+	border-bottom: 1px dashed #DDD;
+}
+.left_list_box li .icon_li {
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	background-image: url(../images/icon_list.png);
+	background-repeat: no-repeat;
+	background-position: 0px -200px;
+	vertical-align: text-bottom;
+	margin-right: 5px;
+}
+
+/** 不同频道下左侧列表的样式 **/
+.liankao_main_left #main_left_top .title { border-bottom: 5px solid #f8874f; }
+.aoda_main_left #main_left_top .title { border-bottom: 5px solid #fcd12a; }
+.yishu_main_left #main_left_top .title { border-bottom: 5px solid #2ec64f; }
+.buxi_main_left #main_left_top .title { border-bottom: 5px solid #63d0e7; }
+
+.liankao_main_left .left_list_box h2 { border-bottom: 1px solid #f8874f; border-top: 2px solid #f8874f; }
+.aoda_main_left .left_list_box h2 { border-bottom: 1px solid #fcd12a; border-top: 2px solid #fcd12a; }
+.yishu_main_left .left_list_box h2 { border-bottom: 1px solid #2ec64f; border-top: 2px solid #2ec64f; }
+.buxi_main_left .left_list_box h2 { border-bottom: 1px solid #63d0e7; border-top: 2px solid #63d0e7; }
+
+.liankao_main_left .left_list_box .icon_hot { background-position: 0px -58px; }
+.aoda_main_left .left_list_box .icon_hot { background-position: 0px 0px; }
+.yishu_main_left .left_list_box .icon_hot { background-position: 0px -87px; }
+.buxi_main_left .left_list_box .icon_hot { background-position: 0px -28px; }
+
+.liankao_main_left .left_list_box .icon_li { background-position: 0px -200px; }
+.aoda_main_left .left_list_box .icon_li { background-position: 0px -142px; }
+.yishu_main_left .left_list_box .icon_li { background-position: 0px -227px; }
+.buxi_main_left .left_list_box .icon_li { background-position: 0px -170px; }
+
+
+#main_left{
+	width:360px;
+	float:left;
+	text-align: left;
+	margin-left: 10px;
+	min-height: 200px;
+}
+
+#main_right {
+	float: left;
+	width: 840px;
+	text-align: left;
+}
+
+#main_right .content_box {
+	padding: 30px;
+	border-top: 5px solid #e58411;
+	border-left: 1px solid #DDD;
+	border-right: 1px solid #DDD;
+	border-bottom: 1px solid #DDD;
+	backgrond-color: #fcfcfc;
+	text-align: center;
+}
+#main_right .content_box h1.article_title {
+	font-size: 20px;
+}
+#main_right .content_box .article_remark {
+	border-bottom: 1px solid #DDD;
+	line-height: 50px;
+}
+#main_right .content_box .article_remark span {
+	padding-left: 10px;
+	padding-right: 10px;
+	color: #666;
+}
+#main_right .content_box .article_content {
+	text-align: left;
+	line-height: 25px;
+	text-align: left;
+}
+
+/** 页层次导航 **/
+.detail_nav_bar {
+	line-height: 40px;
+	text-align: left;
+}
+.list_nav_bar {
+	line-height: 40px;
+	border-bottom: 4px solid #E58411;
+	text-align: left;
+}

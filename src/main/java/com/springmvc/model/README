@@ -1,0 +1,4 @@
+BO: business object，主要用于Service层与Controller层交互的。
+PO: ORM使用的基本对象，与表一一对应。
+VO: Value Object、View Object，这是使做View Object。传递到View层的对象。
+FORM: VO的一个分支，主要跟表单对应的Model

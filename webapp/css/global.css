@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+/*
+This page helps global styles a free hand.
+Last changed by Kangk 
+*/
+html, body { width:100%; height:100%; margin:0; padding:0; }
+body { text-align:center; font-size:14px; color:#454545; font-family: "宋体", Arial, Verdana, Helvetica, sans-serif; }
+a { text-decoration:none; color: #333; }
+a:hover { color:#ff4300; }
+ul, li, h1, h2, h3, h4, h5, h6, dl, dt, dd, form, input, hr, img, div, label, span, p { margin:0; padding:0; }
+ul, li { list-style:none; }
+h1 { font-family: "微软雅黑", "宋体", Arial, Verdana, Helvetica, sans-serif; }
+h2 { font-family: "微软雅黑", "宋体", Arial, Verdana, Helvetica, sans-serif; }
+h3 { font-family: "微软雅黑", "宋体", Arial, Verdana, Helvetica, sans-serif; }
+h4 { font-size:16px; font-family: "微软雅黑", "宋体", Arial, Verdana, Helvetica, sans-serif; }
+h5 { font-size:15px; font-family: "微软雅黑", "宋体", Arial, Verdana, Helvetica, sans-serif; }
+h6 { font-size:14px; font-family: "微软雅黑", "宋体", Arial, Verdana, Helvetica, sans-serif; }
+img { border:0; }
+input{ font-family: "宋体", Arial, Helvetica, sans-serif}
+pre { white-space: pre-wrap; word-wrap: break-word; margin: 0; padding: 0; }
+.font_title { font-family: "微软雅黑", "宋体", Arial, Verdana, Helvetica, sans-serif; }
+.font_en { font-family: Arial, Verdana, Helvetica, sans-serif; }
+
+.air { height:10px; clear:both; overflow:hidden;  }
+/*********************** normal *********************************/
+.clearfix {
+	clear:both;
+	visibility:hidden;
+	width:0px;
+	height:0px;
+	line-height:0px;
+	font-size:0pt;
+}
+.title_hidden {
+	overflow:hidden;
+	white-space:nowrap;
+	word-spacing:normal;
+	word-break:none;
+	text-overflow:ellipsis;
+}
+.require{ color: #F00; }
+
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+
+/** spring form validation **/
+p.errorlist {
+	border: 1px solid red;
+	padding: 3px;
+	margin: 3px;
+	color: red;
+	line-height: 20px;
+}
+/** jquery form validation **/
+form label.error {
+	color: red;
+}
+
+.buttonStyle{width:64px;height:22px;line-height:22px;color:#369;text-align:center;background:url(../image/buticon.gif) no-repeat left top;border:0;font-size:12px;cursor: pointer;}
+.buttonStyle:hover{background:url(../image/buticon.gif) no-repeat left -23px;}
+
+table{border-collapse: collapse;} /**added by yt**/
