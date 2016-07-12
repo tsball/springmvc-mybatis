@@ -3,7 +3,7 @@
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
-	<display-name>piano-web</display-name>
+	<display-name>springmvc-mybatis</display-name>
 	
 	<filter> 
     	<filter-name>Set Character Encoding</filter-name> 
@@ -40,7 +40,7 @@
 	
 	<!-- 主要针对Uploadify session问题构建 -->
 	<!-- 
-    <listener>  
+    <listener>
     	<listener-class>com.jtjk.listener.SessionListener</listener-class>  
     </listener>
      -->

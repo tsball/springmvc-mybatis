@@ -1,42 +1,43 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
-	<groupId>com.jtjk</groupId>
-	<artifactId>piano-web</artifactId>
+
+	<groupId>com.springmvc</groupId>
+	<artifactId>springmvc-mybatis</artifactId>
 	<version>1.0.0</version>
 	<packaging>war</packaging>
-	<name>商城</name>
-	<description>商城</description>
-	
+	<name>springmvc-mybatis</name>
+	<description>Demo</description>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!--  编译jdk版本  -->
-    <jdk.version>1.7</jdk.version>
-    <!--  依赖版本  -->
-    <mybatis.version>3.3.1</mybatis.version>
-    <mapper.version>3.3.6</mapper.version>
-    <pagehelper.version>4.1.1</pagehelper.version>
-    <mysql.version>5.1.29</mysql.version>
-    <spring.version>3.2.0.RELEASE</spring.version>
-    <mybatis.spring.version>1.2.5</mybatis.spring.version>
+		<!-- 编译jdk版本 -->
+		<jdk.version>1.7</jdk.version>
+		<!-- 依赖版本 -->
+		<mybatis.version>3.3.1</mybatis.version>
+		<mapper.version>3.3.6</mapper.version>
+		<pagehelper.version>4.1.1</pagehelper.version>
+		<mysql.version>5.1.29</mysql.version>
+		<spring.version>3.2.0.RELEASE</spring.version>
+		<mybatis.spring.version>1.2.5</mybatis.spring.version>
 	</properties>
-	
+
 	<!-- maven compile核心版本是1.5，如果不适用，则需要手动修改; maven update project后生效 -->
-	<!-- compile需要Window->Preference->Java->Jre Install->选择JDK,非JRE(激活用来编译的版本，一般跟项目JRE一致，该JDK lib下需要包含tools.jar - jdk/lib/tools.jar) -->
-	<build>   
-	    <plugins>
-	        <plugin>
-	            <artifactId>maven-compiler-plugin</artifactId>   
-	            <configuration>  
-	                <source>${jdk.version}</source>
-	                <target>${jdk.version}</target>
-	                <encoding>${project.build.sourceEncoding}</encoding>
-	            </configuration>
-	        </plugin>
-	        
-	         <!-- webapp路径修改：由src/main/webapp修改为webapp -->
-	        <plugin>
+	<!-- compile需要Window->Preference->Java->Jre Install->选择JDK,非JRE(激活用来编译的版本，一般跟项目JRE一致，该JDK 
+		lib下需要包含tools.jar - jdk/lib/tools.jar) -->
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+			<!-- webapp路径修改：由src/main/webapp修改为webapp -->
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
@@ -45,29 +46,21 @@
 					</warSourceDirectory>
 				</configuration>
 			</plugin>
-			
-	        <plugin>
-	            <artifactId>maven-compiler-plugin</artifactId>   
-	            <configuration>  
-	                <source>1.7</source>
-	                <target>1.7</target>
-	                <encoding>UTF-8</encoding>
-	            </configuration>
-	        </plugin>
-	    </plugins>
-	    <!-- 
-	    <filters>
-        	<filter>src/main/filters/filter-${env}.properties</filter>
-    	</filters>
-    	<resources>
-	        <resource>
-	            <directory>src/main/resources</directory>
-	            <filtering>true</filtering>
-	        </resource>
-	    </resources>
-	     -->
+
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+		<!-- <filters> <filter>src/main/filters/filter-${env}.properties</filter> 
+			</filters> <resources> <resource> <directory>src/main/resources</directory> 
+			<filtering>true</filtering> </resource> </resources> -->
 	</build>
-	
+
 	<dependencies>
 		<!-- struts dependency. require while try HttpServletRequest request=ServletActionContext.getRequest(); -->
 		<dependency>
@@ -76,7 +69,7 @@
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
-	
+
 		<!-- spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -98,20 +91,20 @@
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
+
 		<!-- Include java mail api -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<version>${spring.version}</version>
-	    </dependency>
-	    
-	    <dependency>
+		</dependency>
+
+		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>1.4</version>
 		</dependency>
-		
+
 		<!-- spring web -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -123,46 +116,46 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
+
 		<!-- spring security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
 			<version>3.1.4.RELEASE</version>
 		</dependency>
-		
+
 		<!-- spring用到的注解 -->
 		<dependency>
 			<groupId>javax.annotation</groupId>
 			<artifactId>jsr250-api</artifactId>
 			<version>1.0</version>
 		</dependency>
-		
+
 		<!-- spring validation -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>4.1.0.Final</version>
 		</dependency>
-		
+
 		<!-- spring json -->
-		<dependency>  
-		    <groupId>org.codehaus.jackson</groupId>  
-		    <artifactId>jackson-core-asl</artifactId>  
-		    <version>1.8.4</version>  
-		</dependency>  
-		<dependency>  
-		    <groupId>org.codehaus.jackson</groupId>  
-		    <artifactId>jackson-mapper-asl</artifactId>  
-		    <version>1.8.4</version>  
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.8.4</version>
 		</dependency>
-		
-		<dependency>    
-		    <groupId>net.sf.json-lib</groupId>    
-		    <artifactId>json-lib</artifactId>    
-		    <version>2.4</version>    
-		    <classifier>jdk15</classifier> 
-		</dependency>       
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.8.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.4</version>
+			<classifier>jdk15</classifier>
+		</dependency>
 
 		<!-- mysql -->
 		<dependency>
@@ -170,19 +163,19 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.version}</version>
 		</dependency>
-		
-		<!--druid-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.0.11</version>
-        </dependency>
-		
+
+		<!--druid -->
 		<dependency>
-            <groupId>commons-dbcp</groupId>
-            <artifactId>commons-dbcp</artifactId>
-            <version>1.4</version>
-	    </dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.11</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
 
 		<!-- tab lib: jstl.jar, standard.jar -->
 		<!-- standard.jar -->
@@ -224,50 +217,45 @@
 			<artifactId>cglib-nodep</artifactId>
 			<version>2.1_3</version>
 		</dependency>
-		
-		<!--  -->	
-		<!-- 	
-		<dependency>
-	        <groupId>org.apache.tomcat</groupId>
-	        <artifactId>tomcat-coyote</artifactId>
-	        <version>7.0.12</version>
-	      </dependency>
-		-->
-		
+
+		<!-- -->
+		<!-- <dependency> <groupId>org.apache.tomcat</groupId> <artifactId>tomcat-coyote</artifactId> 
+			<version>7.0.12</version> </dependency> -->
+
 		<!-- Tomcat自带ServletFileUpload，但是Tomcat服务器7.0.12与7.0.42ServletFileUpload接口完全不同 -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.3</version>
 		</dependency>
-		
+
 		<!-- jasypt -->
 		<dependency>
 			<groupId>org.jasypt</groupId>
 			<artifactId>jasypt-spring3</artifactId>
 			<version>1.9.0</version>
-	    </dependency>
-	    
-	    <!-- mybatis -->
-	    <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>${mybatis.version}</version>
-        </dependency>
-	    <dependency>
+		</dependency>
+
+		<!-- mybatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>${mybatis.spring.version}</version>
 		</dependency>
-		
+
 		<!-- base mapper -->
 		<dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper</artifactId>
-            <version>3.3.8</version>
-        </dependency>
-        
-        <dependency>
+			<groupId>tk.mybatis</groupId>
+			<artifactId>mapper</artifactId>
+			<version>3.3.8</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>19.0</version>
@@ -278,6 +266,12 @@
 
 	<!-- Repositories Setting -->
 	<repositories>
+		<repository>
+			<id>maven repo1</id>
+			<name>maven repo1</name>
+			<url>http://repo1.maven.org/maven2/</url>
+		</repository>
+		
 		<!-- apache environment: provide struts -->
 		<repository>
 			<id>apache.nexus</id>
@@ -285,67 +279,25 @@
 			<url>https://repository.apache.org/content/groups/staging/</url>
 		</repository>
 
-		<!-- hibernate -->
-		<!-- Reference https://community.jboss.org/wiki/MavenRepository -->
 		<repository>
 			<id>JBoss repository</id>
 			<url>https://repository.jboss.org/nexus/content/repositories/central</url>
 		</repository>
 
-		<!-- spring -->
-		<!-- Reference http://www.springsource.org/node/2962 -->
 		<repository>
 			<id>repository.springframework.maven.release</id>
 			<name>Spring Framework Maven Release Repository</name>
 			<url>http://maven.springframework.org/release</url>
 		</repository>
 
-		<!-- provide hsqldb -->
-		<repository>
-			<id>maven repo1</id>
-			<name>maven repo1</name>
-			<url>http://repo1.maven.org/maven2/</url>
-		</repository>
-
-		<!-- provide jmock -->
-		<!-- 
-		<repository>
-			<id>jarvana Maven Repository Browser</id>
-			<name>jarvana Maven Repository Browser</name>
-			<url>http://www.jarvana.com/jarvana/browse/</url>
-		</repository>
-		 -->
-
-		<!-- all maven -->
-		<repository>
-			<id>mvnrepository</id>
-			<name>mvnrepository</name>
-			<url>http://mvnrepository.com/</url>
-		</repository>
-		
 	</repositories>
-	
+
 	<!-- 配置profile：执行 mvn complile -P development，则会读取对应的配置，应用到项目 -->
-	<!-- 
-	<profiles>
-       <profile>
-           <id>dev</id>
-           <properties>
-              <env>dev</env>
-           </properties>
-           <activation>
-              <activeByDefault>true</activeByDefault>
-           </activation>
-       </profile>
-       
-       <profile>
-           <id>prod</id>
-           <properties>
-              <env>prod</env>
-           </properties>
-       </profile>
-	</profiles>
-	 -->
-	
+	<!-- <profiles> <profile> <id>dev</id> <properties> <env>dev</env> </properties> 
+		<activation> <activeByDefault>true</activeByDefault> </activation> </profile> 
+		<profile> <id>prod</id> <properties> <env>prod</env> </properties> </profile> 
+		</profiles> -->
+
+
 	
 </project>
