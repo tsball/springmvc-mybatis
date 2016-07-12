@@ -8,7 +8,6 @@ import javax.sql.DataSource;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 
 public class CustomJdbcTemplate extends JdbcTemplate {
 	
@@ -33,9 +32,10 @@ public class CustomJdbcTemplate extends JdbcTemplate {
 	 */
 	public <T> T queryForObject(Class<T> elementType, String sql, Object... args) {
 		try {
-			return queryForObject(sql,  
-	                   ParameterizedBeanPropertyRowMapper.newInstance(elementType),  
-	                   args);
+			// return queryForObject(sql,  
+	        //           ParameterizedBeanPropertyRowMapper.newInstance(elementType),  
+	        //           args);
+			return null;
 		} catch (EmptyResultDataAccessException e) {
 			return null;
 		}// catch (IncorrectResultSizeDataAccessException e) {}
@@ -57,9 +57,10 @@ public class CustomJdbcTemplate extends JdbcTemplate {
 	 */
 	public <T> List<T> queryForList(Class<T> elementType, String sql, Object... args) {
 		try {
-			return query(sql,  
-	                   ParameterizedBeanPropertyRowMapper.newInstance(elementType),  
-	                   args); 
+			// return query(sql,  
+	        //           ParameterizedBeanPropertyRowMapper.newInstance(elementType),  
+	        //           args); 
+			return null;
 		} catch (EmptyResultDataAccessException e) {
 			return new ArrayList<T>();
 		}

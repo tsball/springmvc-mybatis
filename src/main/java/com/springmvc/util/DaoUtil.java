@@ -13,7 +13,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.SingleColumnRowMapper;
-import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
@@ -37,9 +36,10 @@ public class DaoUtil {
 	@Deprecated //直接在CustomJdbcTemplate实现该辅助类的功能
 	public static <T> T queryForObject(JdbcTemplate jdbcTemplate, Class<T> elementType, String sql, Object... args) {
 		try {
-			return jdbcTemplate.queryForObject(sql,  
-	                   ParameterizedBeanPropertyRowMapper.newInstance(elementType),  
-	                   args);
+			// return jdbcTemplate.queryForObject(sql,  
+	        //           ParameterizedBeanPropertyRowMapper.newInstance(elementType),  
+	        //           args);
+			return null;
 		} catch (EmptyResultDataAccessException e) {
 			return null;
 		}// catch (IncorrectResultSizeDataAccessException e) {}
@@ -63,9 +63,10 @@ public class DaoUtil {
 	@Deprecated //直接在CustomJdbcTemplate实现该辅助类的功能
 	public static <T> List<T> queryForList(JdbcTemplate jdbcTemplate, Class<T> elementType, String sql, Object... args) {
 		try {
-			return jdbcTemplate.query(sql,  
-	                   ParameterizedBeanPropertyRowMapper.newInstance(elementType),  
-	                   args); 
+			// return jdbcTemplate.query(sql,  
+	        //           ParameterizedBeanPropertyRowMapper.newInstance(elementType),  
+	        //           args); 
+			return null;
 		} catch (EmptyResultDataAccessException e) {
 			return new ArrayList<T>();
 		}

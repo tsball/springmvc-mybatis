@@ -36,7 +36,7 @@
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" >  
 	    <property name="messageConverters">  
 	        <util:list id="beanList">  
-	            <ref bean="jacksonMessageConverter"/>  
+	            <!-- <ref bean="jacksonMessageConverter"/> -->  
 	            <ref bean="stringHttpMessageConverter"/>
 	        </util:list>
 	    </property>
@@ -55,8 +55,8 @@
 	</bean>
 	
 	<!-- 启动JSON格式的配置 -->
+	<!-- 
 	<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
-		<!-- 解决 HttpMediaTypeNotAcceptableException: Could not find acceptable representation -->
 		<property name="supportedMediaTypes">
 			<list>
 	        	<value>text/json;charset=UTF-8</value>
@@ -64,6 +64,7 @@
 			</list>
 		</property>
 	</bean>
+	 -->
 	
 	<!-- spring intercept -->
 	<mvc:interceptors>
