@@ -34,8 +34,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>mvc-dispatcher</servlet-name>
-		<url-pattern>*.html</url-pattern><!-- 伪静态页面。需要考虑搜索引擎收录的统一使用改后缀 -->
-		<url-pattern>*.do</url-pattern><!-- 后台常用。一般情况使用该后缀-->
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
 	<!-- 主要针对Uploadify session问题构建 -->
@@ -64,8 +63,7 @@
 	</context-param>
 	
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.do</welcome-file>
+		<welcome-file>index</welcome-file>
 	</welcome-file-list>
 	
 	<!-- log4j -->

@@ -19,7 +19,7 @@ public class UserController extends UserAwareController {
 	
 	@RequestMapping("/index")
 	public ModelAndView index(HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView(CommonConst.ADMIN_TEMPLATE_PREFIX + "user/index");
+		ModelAndView mv = new ModelAndView(CommonConst.ADMIN_TPL_PATH + "user/index");
 		
 		return mv;
 	}

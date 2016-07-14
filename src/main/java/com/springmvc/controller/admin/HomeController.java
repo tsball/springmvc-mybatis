@@ -13,7 +13,7 @@ public class HomeController extends UserAwareController {
 	
 	@RequestMapping("/index")
 	public ModelAndView index() {
-		return new ModelAndView(CommonConst.ADMIN_TEMPLATE_PREFIX + "home/index");
+		return new ModelAndView(CommonConst.ADMIN_TPL_PATH + "home/index");
 	}
 	
 }

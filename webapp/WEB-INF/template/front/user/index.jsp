@@ -11,8 +11,7 @@
 </head>
 <body>
 <h1>Spring MVC + MyBatis + Base Mapper</h1>
-<a href="${pageContext.request.contextPath}/user/">用户管理页面</a>
-<a href="${pageContext.request.contextPath}/save-fail-test.do">新增Test用户(失败回滚)</a>
+<a href="${pageContext.request.contextPath}/user/add">新增Test用户</a>
 <ul>
 	<c:forEach items="${userList}" var="obj">
 		<li><a href="${pageContext.request.contextPath}/user/${obj.id}">${obj.name}</a> | 昵称:${obj.nickname} | 创建时间: ${obj.createAt}</li>

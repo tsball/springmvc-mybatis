@@ -27,7 +27,7 @@ public class HomeController {
 	
 	@RequestMapping("/index")
 	public ModelAndView index() {
-		ModelAndView mv = new ModelAndView(CommonConst.FRONT_TEMPLATE_PREFIX + "home/index");
+		ModelAndView mv = new ModelAndView(CommonConst.FRONT_TPL_PATH + "home/index");
 		
 		List<UserDto> userList = userService.getAll();
 		

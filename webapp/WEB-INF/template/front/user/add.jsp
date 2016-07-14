@@ -10,13 +10,19 @@
 
 </head>
 <body>
-<h1>Spring MVC + MyBatis + Base Mapper</h1>
-<a href="${pageContext.request.contextPath}/user/">用户管理页面</a>
-<a href="${pageContext.request.contextPath}/save-fail-test.do">新增Test用户(失败回滚)</a>
-<ul>
-	<c:forEach items="${userList}" var="obj">
-		<li><a href="${pageContext.request.contextPath}/user/${obj.id}">${obj.name}</a> | 昵称:${obj.nickname} | 创建时间: ${obj.createAt}</li>
-	</c:forEach>
-</ul>
+	<h1>Add User</h1>
+	<form action="${pageContext.request.contextPath}/user/" method="post">
+		<div>
+			<label>姓名</label>
+			<input type="text" name="name" />
+		</div>
+		<div>
+			<label>昵称</label>
+			<input type="text" name="nickname" />
+		</div>
+		<div>
+			<button type="submit">提交</button>
+		</div>
+	</form>
 </body>
 </html>
