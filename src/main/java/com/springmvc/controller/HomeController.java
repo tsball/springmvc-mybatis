@@ -25,7 +25,7 @@ public class HomeController {
 	@Resource
 	IUserService userService;
 	
-	@RequestMapping("/index")
+	@RequestMapping("/")
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView(CommonConst.FRONT_TPL_PATH + "home/index");
 		

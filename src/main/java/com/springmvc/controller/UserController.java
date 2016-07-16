@@ -6,18 +6,16 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.common.collect.Maps;
 import com.springmvc.constants.CommonConst;
@@ -32,19 +30,8 @@ public class UserController {
 	
 	@Resource
 	IUserService userService;
-	/**
-	@RequestMapping("/index")
-	public ModelAndView index() {
-		ModelAndView mv = new ModelAndView(CommonConst.FRONT_TEMPLATE_PREFIX + "home/index");
-		
-		List<UserDto> userList = userService.getAll();
-		
-		mv.addObject("userList", userList);
-		return mv;
-	}
-	*/
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView listAllUsers() {
 		ModelAndView mv = new ModelAndView(CommonConst.FRONT_TPL_PATH + "user/index");
 		
@@ -71,8 +58,8 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/index", method = RequestMethod.POST)
-	public ResponseEntity<Void> create(HttpServletRequest request, UriComponentsBuilder ucBuilder) {
+	@RequestMapping(value = "", method = RequestMethod.POST)
+	public ModelAndView create(HttpServletRequest request, final RedirectAttributes redirectAttr) {
 		// add a user
 		User user = new User();
 		user.setName("Test");
@@ -81,25 +68,39 @@ public class UserController {
 		user.setUpdateAt(DateTimeUtil.getCurrTimestamp());
 		userService.save(user);
 		
-		HttpHeaders headers = new HttpHeaders();
-		headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri());
-		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+		redirectAttr.addFlashAttribute("notice", "Created success!");
+		
+		return new ModelAndView("redirect:/user");
 	}
 	
-	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView edit(HttpServletRequest request) {
+	@RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
+	public ModelAndView edit(HttpServletRequest request, @PathVariable("id") Integer id) {
 		ModelAndView mv = new ModelAndView(CommonConst.FRONT_TPL_PATH + "user/edit");
 		
+		User user = userService.getById(id);
+		
+		mv.addObject("user", user);
 		return mv;
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<User> update(@PathVariable("id") Integer id, @RequestBody User user) {
+	public ModelAndView update(@PathVariable("id") Integer id, final RedirectAttributes redirectAttr) {
 		
-		user.setUpdateAt(DateTimeUtil.getCurrTimestamp());
-		userService.update(user);
+		//user.setUpdateAt(DateTimeUtil.getCurrTimestamp());
+		//userService.update(user);
 		
-		return new ResponseEntity<User>(user, HttpStatus.OK);
+		redirectAttr.addFlashAttribute("notice", "Update success!");
+		
+		return new ModelAndView("redirect:/user");
+	}
+	
+	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)
+	public ModelAndView delete(@PathVariable("id") Integer id, final RedirectAttributes redirectAttr) {
+		userService.delete(id);
+		
+		redirectAttr.addFlashAttribute("notice", "Delete success!");
+		
+		return new ModelAndView("redirect:/user");
 	}
 	
 	@RequestMapping("/save-fail-test")
