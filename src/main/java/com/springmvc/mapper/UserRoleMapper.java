@@ -4,12 +4,11 @@ import java.util.List;
 
 import tk.mybatis.mapper.common.Mapper;
 
+import com.springmvc.model.po.Role;
 import com.springmvc.model.po.User;
 
-public interface UserMapper extends Mapper<User> {
+public interface UserRoleMapper extends Mapper<User> {
 
-	List<User> selectAll();
-	
-	User findById(Integer id);
+	List<Role> getRolesByUserId(Integer userId);
 	
 }

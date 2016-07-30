@@ -34,6 +34,11 @@ public class UserService extends BasicService<User> implements IUserService {
 		});
 		return userDtoList;
 	}
+	
+	@Override
+	public User getUser(Integer userId) {
+		return userMapper.findById(userId);
+	}
 
 	@Override
 	public void saveFailTest(User user) {

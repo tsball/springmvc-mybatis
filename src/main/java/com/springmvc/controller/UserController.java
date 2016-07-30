@@ -6,9 +6,10 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.http.HttpStatus;
+import org.springframework.beans.BeanUtils;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.google.common.collect.Maps;
 import com.springmvc.constants.CommonConst;
 import com.springmvc.model.dto.UserDto;
+import com.springmvc.model.form.user.UserForm;
 import com.springmvc.model.po.User;
 import com.springmvc.service.IUserService;
 import com.springmvc.util.DateTimeUtil;
@@ -42,13 +44,13 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<User> show(@PathVariable("id") Integer id) {
-		User user = userService.getById(id);
-		if (user == null) {
-			System.out.println("User with id " + id + " not found");
-			return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
-		}
-		return new ResponseEntity<User>(user, HttpStatus.OK);
+	public ModelAndView show(@PathVariable("id") Integer id) {
+		ModelAndView mv = new ModelAndView(CommonConst.FRONT_TPL_PATH + "user/show");
+		
+		User user = userService.getUser(id);
+		
+		mv.addObject("user", user);
+		return mv;
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -84,13 +86,19 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ModelAndView update(@PathVariable("id") Integer id, final RedirectAttributes redirectAttr) {
+	public ModelAndView update(@PathVariable("id") Integer id, @ModelAttribute("user") UserForm form, BindingResult result, final RedirectAttributes redirectAttr) {
 		
-		//user.setUpdateAt(DateTimeUtil.getCurrTimestamp());
-		//userService.update(user);
+		if (result.hasErrors()) {
+			redirectAttr.addFlashAttribute("notice", result.getFieldErrors());
+			return new ModelAndView("redirect:/user/" + id + "/edit");
+		}
 		
-		redirectAttr.addFlashAttribute("notice", "Update success!");
+		User user = new User();
+		user.setId(id);
+		BeanUtils.copyProperties(form, user);
+		userService.update(user);
 		
+		redirectAttr.addFlashAttribute("notice", "更新成功!");
 		return new ModelAndView("redirect:/user");
 	}
 	

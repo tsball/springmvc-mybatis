@@ -235,7 +235,7 @@
 	        <constructor-arg ref="strongEncryptor" />
 	        <property name="locations">
 	            <list>
-	                <value>classpath:account-dev.properties</value>
+	                <value>classpath:database-dev.properties</value>
 	                <value>classpath:settings-dev.properties</value>
 	            </list>
 	        </property>
@@ -246,7 +246,7 @@
 	        <constructor-arg ref="strongEncryptor" />
 	        <property name="locations">
 	            <list>
-	                <value>classpath:account-prod.properties</value>
+	                <value>classpath:database-prod.properties</value>
 	                <value>classpath:settings-prod.properties</value>
 	            </list>
 	        </property>

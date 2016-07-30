@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,14 +12,14 @@
 </head>
 <body>
 	<h1>Edit User</h1>
-	<form:form action="${pageContext.request.contextPath}/user/${user.id}" method="PUT">
+	<form:form modelAttribute="user" action="${pageContext.request.contextPath}/user/${user.id}" method="PUT">
 		<div>
-			<label>姓名</label>
-			<input type="text" name="name" value="${user.name}" />
+			<form:label path="name">用户名</form:label>
+			<form:input path="name" />
 		</div>
 		<div>
-			<label>昵称</label>
-			<input type="text" name="nickname" value="${user.nickname}" />
+			<form:label path="nickname">昵称</form:label>
+			<form:input path="nickname" />
 		</div>
 		<div>
 			<button type="submit">提交</button>

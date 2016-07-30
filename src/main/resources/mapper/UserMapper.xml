@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.springmvc.mapper.UserMapper">
-  <select id="selectAll" resultType="com.springmvc.model.po.User">
-    select * from user
-  </select>
+	<select id="selectAll" resultType="com.springmvc.model.po.User">
+		select * from user
+	</select>
+
+	<resultMap id="userResultMap" type="com.springmvc.model.po.User" autoMapping="true">
+		<!-- many roles -->
+		<collection property="roleList" javaType="ArrayList"
+			column="id" ofType="com.springmvc.model.po.Role" select="getRolesByUserId" />
+	</resultMap>
+
+	<select id="findById" resultMap="userResultMap" parameterType="int">
+		SELECT *
+		FROM user
+		WHERE id=#{id}
+	</select>
+
+	<select id="getRolesByUserId" resultType="com.springmvc.model.po.Role"
+		parameterType="int">
+		SELECT *
+		FROM user_role ur
+		INNER JOIN role r on
+		r.id=ur.role_id
+		WHERE ur.user_id=#{id}
+	</select>
 </mapper>

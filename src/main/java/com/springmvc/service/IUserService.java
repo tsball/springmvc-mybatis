@@ -9,6 +9,8 @@ public interface IUserService extends IBasicService<User> {
 	
 	List<UserDto> getAll();
 	
+	User getUser(Integer userId);
+	
 	void saveFailTest(User user);
 	
 }
