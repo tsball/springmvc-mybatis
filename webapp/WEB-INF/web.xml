@@ -5,6 +5,18 @@
 	version="2.5">
 	<display-name>springmvc-mybatis</display-name>
 	
+	<!-- All the requests must be validated by SpringSecurity first -->  
+    <filter>  
+        <filter-name>springSecurityFilterChain</filter-name>  
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>  
+    </filter>  
+  
+    <filter-mapping>  
+        <filter-name>springSecurityFilterChain</filter-name>  
+        <url-pattern>/*</url-pattern>  
+    </filter-mapping>
+	
+	<!-- Character Encoding -->
 	<filter> 
     	<filter-name>Set Character Encoding</filter-name> 
     	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class> 
@@ -70,7 +82,10 @@
 	<!-- 指定Spring Bean的配置文件所在目录。默认配置在WEB-INF目录下 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:applicationContext.xml</param-value>
+		<param-value>
+			classpath:spring-security.xml
+			classpath:applicationContext.xml
+		</param-value>
 	</context-param>
 	
 	<welcome-file-list>

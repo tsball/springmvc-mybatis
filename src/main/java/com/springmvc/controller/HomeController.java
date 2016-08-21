@@ -19,7 +19,7 @@ import com.springmvc.service.IUserService;
 import com.springmvc.util.DateTimeUtil;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("")
 public class HomeController {
 	
 	@Resource
@@ -32,6 +32,34 @@ public class HomeController {
 		List<UserDto> userList = userService.getAll();
 		
 		mv.addObject("userList", userList);
+		return mv;
+	}
+	
+	@RequestMapping("/home/common")
+	public ModelAndView common() {
+		ModelAndView mv = new ModelAndView(CommonConst.FRONT_TPL_PATH + "home/user");
+		
+		return mv;
+	}
+	
+	@RequestMapping("/home/console")
+	public ModelAndView security() {
+		ModelAndView mv = new ModelAndView(CommonConst.FRONT_TPL_PATH + "home/console");
+		
+		return mv;
+	}
+	
+	@RequestMapping("/home/signin")
+	public ModelAndView signin() {
+		ModelAndView mv = new ModelAndView(CommonConst.FRONT_TPL_PATH + "home/signin");
+		
+		return mv;
+	}
+	
+	@RequestMapping("/home/deny")
+	public ModelAndView deny() {
+		ModelAndView mv = new ModelAndView(CommonConst.FRONT_TPL_PATH + "home/deny");
+		
 		return mv;
 	}
 	
