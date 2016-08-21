@@ -14,6 +14,7 @@
 	<h1>Login</h1>
 	<div id="login-error">${error}</div>
 	<form action="../j_spring_security_check" method="post">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<p>
 			<label for="j_username">Username</label>
 			<input id="j_username" name="j_username" type="text" value="admin" />

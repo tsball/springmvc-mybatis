@@ -12,6 +12,13 @@
 <body>
 <h1>管理平台页面（需登录）</h1>
 <p>
+	<ul>
+		<li><a href="${pageContext.request.contextPath}/user/">用户管理</a></li>
+		<li><a href="${pageContext.request.contextPath}/role/">角色管理</a></li>
+		<li><a href="${pageContext.request.contextPath}/authority/">权限管理</a></li>
+	</ul>
+</p>
+<p>
 	<a href="signout">退出</a>
 </p>
 </body>
