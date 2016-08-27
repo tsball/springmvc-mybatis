@@ -4,35 +4,39 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
+import com.springmvc.mapper.UserMapper;
+import com.springmvc.model.po.User;
+
+@Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
+	@Resource
+	UserMapper userMapper;
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserDetails user = null;  
+		UserDetails userDetails = null;  
 		  
-        try {  
-        	// get user by username from db
-        	String userName = "admin";
-        	PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        	String hashedPassword = passwordEncoder.encode("admin");
+        try {
+        	User user = userMapper.findByName(username);
         	
         	// build a user, and use for validation with form submit
-        	user = new User(userName, hashedPassword, true, true, true, true, getAuthorities(1));  
+        	userDetails = new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(), true, true, true, true, getAuthorities(1));  
   
         } catch (Exception e) {  
-            throw new UsernameNotFoundException("Error in retrieving user");  
-        }  
+            throw new UsernameNotFoundException("Error in retrieving user");
+        }
   
-        return user; 
+        return userDetails; 
 	}
 	
     /** 
@@ -41,7 +45,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      * @param access 
      * @return 
      */  
-    public Collection<GrantedAuthority> getAuthorities(Integer access) {  
+    private Collection<GrantedAuthority> getAuthorities(Integer access) {  
   
         List<GrantedAuthority> authList = new ArrayList<GrantedAuthority>(2);  
   

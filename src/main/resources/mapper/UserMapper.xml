@@ -16,6 +16,12 @@
 		FROM user
 		WHERE id=#{id}
 	</select>
+	
+	<select id="findByName" resultMap="userResultMap" parameterType="String">
+		SELECT *
+		FROM user
+		WHERE name=#{name}
+	</select>
 
 	<select id="getRolesByUserId" resultType="com.springmvc.model.po.Role"
 		parameterType="int">

@@ -12,4 +12,6 @@ public interface UserMapper extends Mapper<User> {
 	
 	User findById(Integer id);
 	
+	User findByName(String name);
+	
 }
