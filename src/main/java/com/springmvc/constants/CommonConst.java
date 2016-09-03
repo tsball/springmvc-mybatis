@@ -1,10 +1,7 @@
 package com.springmvc.constants;
 
 public class CommonConst {
-	
-	//URL
-	public static final String URL_SPRING_SUFFIX = ".do";
-	
+
 	//后台模板前缀
 	public static final String ADMIN_TPL_PATH = "admin/";
 	public static final String FRONT_TPL_PATH = "front/";

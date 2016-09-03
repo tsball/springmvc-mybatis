@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.MediaType;
@@ -55,17 +56,26 @@ public class UserController {
 	
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public ModelAndView add(HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView(CommonConst.FRONT_TPL_PATH + "user/add");
+		ModelAndView mv = new ModelAndView(CommonConst.FRONT_TPL_PATH + "user/add", "user", new UserForm());
 		
 		return mv;
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public ModelAndView create(HttpServletRequest request, final RedirectAttributes redirectAttr) {
+	public ModelAndView create(HttpServletRequest request, @Valid @ModelAttribute("user") UserForm form, BindingResult result, final RedirectAttributes redirectAttr) {
+		
+		if (result.hasErrors()) {
+			redirectAttr.addFlashAttribute("notice", result.getFieldErrors());
+			return new ModelAndView(CommonConst.FRONT_TPL_PATH + "user/add");
+		}
+		
+		// encode the password in the form
+		// PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    	// form.setPassword(passwordEncoder.encode(form.getPassword()));
+		
 		// add a user
 		User user = new User();
-		user.setName("Test");
-		user.setNickname("Test Nickname");
+		BeanUtils.copyProperties(form, user);
 		user.setCreateAt(DateTimeUtil.getCurrTimestamp());
 		user.setUpdateAt(DateTimeUtil.getCurrTimestamp());
 		userService.save(user);
@@ -86,7 +96,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ModelAndView update(@PathVariable("id") Integer id, @ModelAttribute("user") UserForm form, BindingResult result, final RedirectAttributes redirectAttr) {
+	public ModelAndView update(@PathVariable("id") Integer id, @Valid UserForm form, BindingResult result, final RedirectAttributes redirectAttr) {
 		
 		if (result.hasErrors()) {
 			redirectAttr.addFlashAttribute("notice", result.getFieldErrors());
@@ -96,6 +106,7 @@ public class UserController {
 		User user = new User();
 		user.setId(id);
 		BeanUtils.copyProperties(form, user);
+		user.setUpdateAt(DateTimeUtil.getCurrTimestamp());
 		userService.update(user);
 		
 		redirectAttr.addFlashAttribute("notice", "更新成功!");
