@@ -1,17 +1,28 @@
 # springmvc-mybatis
 
 1. Framework：spring mvc(spring boot) + mybatis + maven
+
    How to start: 
+
    a) mvn spring-boot:run   or  run function main of SampleTomcatJspApplication
+
    b) access http://localhost:8080
+
 2. Development Environment： eclipse + jdk7 + maven
+
 3. Include features: 
+
 	a) Restful
+
 	b) findbug
+
 	c) checkstyle
+
 	d) spring security
+
 	e) Common mybatis mapper
-		Use for the database operation. More refer: http://www.mybatis.org/mybatis-3/
+
+	   Use for the database operation. More refer: http://www.mybatis.org/mybatis-3/
 		   
 	   About common mapper:
 	   The project imports a third-party mapper3.jar for common curd.
