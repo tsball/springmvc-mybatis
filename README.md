@@ -1,7 +1,9 @@
 # springmvc-mybatis
 
 1. Framework：spring mvc(spring boot) + mybatis + maven
-   How to start: a) mvn spring-boot:run   or  run function main of SampleTomcatJspApplication
+   How to start: 
+   a) mvn spring-boot:run   or  run function main of SampleTomcatJspApplication
+   b) access http://localhost:8080
 2. Development Environment： eclipse + jdk7 + maven
 3. Include features: 
 	a) Restful
