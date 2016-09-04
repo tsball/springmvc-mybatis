@@ -12,6 +12,7 @@
 </head>
 <body>
 	<h1>Edit User</h1>
+	<div>${alert}</div>
 	<form:form modelAttribute="user" action="${pageContext.request.contextPath}/user/${user.id}" method="PUT">
 		<div>
 			<form:label path="name">用户名</form:label>

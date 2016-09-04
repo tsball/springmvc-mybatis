@@ -77,18 +77,4 @@ public class HomeController {
 		return Maps.newHashMap();
 	}
 	
-	@RequestMapping("/save-fail-test")
-	@ResponseBody
-	public Map<String, Object> saveFailTest(HttpServletRequest request) throws Exception {
-		// add a user
-		User user = new User();
-		user.setName("Test");
-		user.setNickname("Test Nickname");
-		user.setCreateAt(DateTimeUtil.getCurrTimestamp());
-		user.setUpdateAt(DateTimeUtil.getCurrTimestamp());
-		userService.saveFailTest(user);
-		
-		return Maps.newHashMap();
-	}
-	
 }

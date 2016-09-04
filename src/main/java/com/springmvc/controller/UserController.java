@@ -99,7 +99,7 @@ public class UserController {
 	public ModelAndView update(@PathVariable("id") Integer id, @Valid UserForm form, BindingResult result, final RedirectAttributes redirectAttr) {
 		
 		if (result.hasErrors()) {
-			redirectAttr.addFlashAttribute("notice", result.getFieldErrors());
+			redirectAttr.addFlashAttribute("alert", result.getFieldErrors());
 			return new ModelAndView("redirect:/user/" + id + "/edit");
 		}
 		
@@ -127,11 +127,12 @@ public class UserController {
 	public Map<String, Object> saveFailTest(HttpServletRequest request) throws Exception {
 		// add a user
 		User user = new User();
-		user.setName("Test");
-		user.setNickname("Test Nickname");
+		user.setName("lily");
+		user.setNickname("Lily");
+		user.setPassword("password");
 		user.setCreateAt(DateTimeUtil.getCurrTimestamp());
 		user.setUpdateAt(DateTimeUtil.getCurrTimestamp());
-		userService.saveFailTest(user);
+		userService.insertWithThrowExceptionLater(user);
 		
 		return Maps.newHashMap();
 	}

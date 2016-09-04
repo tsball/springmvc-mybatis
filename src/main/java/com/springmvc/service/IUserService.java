@@ -11,6 +11,6 @@ public interface IUserService extends IBasicService<User> {
 	
 	User getUser(Integer userId);
 	
-	void saveFailTest(User user);
+	void insertWithThrowExceptionLater(User user);
 	
 }

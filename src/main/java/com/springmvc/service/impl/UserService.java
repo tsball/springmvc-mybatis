@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
@@ -41,9 +42,10 @@ public class UserService extends BasicService<User> implements IUserService {
 	}
 
 	@Override
-	public void saveFailTest(User user) {
-		userMapper.insert(user);
-		throw new RuntimeException("Fail to save user, should rollback the db transaction!!!");
+	@Transactional
+	public void insertWithThrowExceptionLater(User user) {
+		userMapper.insertSelective(user);
+		throw new RuntimeException("Fail to save user "+ user.getName() +", should rollback the db transaction!!!");
 	}
 	
 }

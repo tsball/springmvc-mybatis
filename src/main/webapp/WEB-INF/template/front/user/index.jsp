@@ -11,7 +11,8 @@
 </head>
 <body>
 <h1>Spring MVC + MyBatis + Base Mapper</h1>
-<a href="${pageContext.request.contextPath}/user/add">新增Test用户</a>
+	<a href="${pageContext.request.contextPath}/user/add">新增用户</a>
+	<a href="${pageContext.request.contextPath}/user/save-fail-test">新增用户Lily(失败回滚)</a>
 	<div>${notice}</div>
 	<table border="1">
 		<thead>
